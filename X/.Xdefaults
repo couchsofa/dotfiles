@@ -7,7 +7,7 @@ URxvt.scrollBar: false
 !URxvt.foreground: blue
 URxvt.background: #002b36
 URxvt.secondaryScroll: true
-URxvt.font: xft:inconsolata-g for Powerline:pixelsize=12
+URxvt.font: xft:SF Mono:pixelsize=12
 URxvt*letterSpace:-1
 Xft.dpi:	96
 Xft.antialias:	1
