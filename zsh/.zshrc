@@ -87,4 +87,5 @@ source $ZSH/oh-my-zsh.sh
 
 export VISUAL="vim"
 
+alias ls='exa --long --git'
 alias dhcp='sudo systemctl start dhcpcd@wifi0.service'
