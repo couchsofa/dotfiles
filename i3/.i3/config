@@ -180,5 +180,8 @@ bindsym Control+$mod1+l exec i3lock -i ~/wallpaper/cyberpunk-2.png
 # set wallpaper
 exec feh --bg-scale ~/wallpaper/cyberpunk-1.png
 
-# no border on chromium
+# no border and title on chromium
 for_window [title=" - Chromium$"] border none 
+
+# no borders
+for_window [class="^.*"] border none
