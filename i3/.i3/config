@@ -184,4 +184,4 @@ exec feh --bg-scale ~/wallpaper/cyberpunk-1.png
 for_window [title=" - Chromium$"] border none 
 
 # no borders
-for_window [class="^.*"] border none
+new_window normal 0 px
