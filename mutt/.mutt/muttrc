@@ -1,0 +1,97 @@
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+source ~/.mutt/sidebarrc
+
+set mbox_type = Maildir
+set sendmail  = /user/bin/msmtp
+
+set folder    = ~/.offlineimap
+set spoolfile = "+INBOX"
+set mbox      = "+[Gmail]/All Mail"
+set postponed = "+[Gmail]/Drafts"
+unset record
+
+mailboxes +INBOX
+
+# main options
+set realname   = "Arne Rick"
+set from       = "cptrick999@gmail.com"
+set mail_check = 0
+set envelope_from
+
+unset move           # gmail does that
+set delete           # don't ask, just do
+unset confirmappend  # don't ask, just do!
+set quit             # don't ask, just do!!
+unset mark_old       # read/new is good enough for me
+
+# sort/threading
+set sort     = threads
+set sort_aux = reverse-last-date-received
+set sort_re
+
+# look and feel
+set pager_index_lines = 8
+set pager_context     = 5
+set pager_stop
+set menu_scroll
+set smart_wrap
+set tilde
+unset markers
+
+# composing 
+set fcc_attach
+unset mime_forward
+set forward_format = "Fwd: %s"
+set include
+set forward_quote
+
+ignore *                               # first, ignore all headers
+unignore from: to: cc: date: subject:  # then, show only these
+hdr_order from: to: cc: date: subject: # and in this order
+
+
+#set edit_headers = yes
+#
+#set my_username = "cptrick999"
+#set my_realname = "Arne Rick"
+#
+#set realname = "$my_realname"
+#set from = "$my_username@gmail.com"
+#set use_from = yes
+#set envelope_from = yes
+#
+#set smtp_url = "smtps://$my_username@gmail.com@smtp.gmail.com:465/"
+#set smtp_pass = ""
+#set imap_user = "$my_username@gmail.com"
+#set imap_pass = ""
+#set ssl_force_tls = yes
+#
+## REMOTE GMAIL FOLDERS 
+#set folder = 'imaps://imap.gmail.com:993'  
+#set spoolfile = '+INBOX'  
+#set postponed = '+[Google Mail]/Drafts'  
+#set trash = '+[Google Mail]/Trash'  
+##set any_label = '+[Google Mail]/any_label'  
+#
+## LOCAL FOLDERS FOR CACHED HEADERS AND CERTIFICATES 
+#set header_cache =~/.mutt/cache/headers  
+#set message_cachedir =~/.mutt/cache/bodies  
+#set certificate_file =~/.mutt/certificates  
+#set imap_check_subscribed
+#
+## GMail Session
+#set move = no #Stop asking to move read messages to mbox!  
+#set imap_keepalive = 900  
+#
+## G to get mail
+#bind index G imap-fetch-mail
+#set editor = "vim"
+#set charset = "utf-8"
+#set record = ''
+#
+## IMAP: offlineimap
+#set folder = "~/mail"
+#source ~/.mutt/mailboxes
+#set spoolfile = "+account/INBOX"
+#set record = "+account/Sent\ Items"
+#set postponed = "+account/Drafts"

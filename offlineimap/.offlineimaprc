@@ -1,0 +1,46 @@
+[general]
+ui = ttyui
+accounts = Gmail_cptrick
+pythonfile = /home/couchsofa/.offlineimap.py
+
+# Controls how many accounts may be synced simultaneously
+maxsyncaccounts = 10
+
+[Account Gmail_cptrick]
+# Minutes between syncs
+autorefresh = 0.5
+
+# Quick-syncs do not update if the only changes were to IMAP flags.
+# autorefresh=0.5 together with quick=10 yields
+# 10 quick refreshes between each full refresh, with 0.5 minutes between every 
+# refresh, regardless of type.
+quick = 10
+
+localrepository = Gmail_cptrick-Local
+remoterepository = Gmail_cptrick-Remote
+
+[Repository Gmail_cptrick-Local]
+type = Maildir
+localfolders = ~/Mail/Gmail_cptrick
+
+[Repository Gmail_cptrick-Remote]
+type = Gmail
+remoteuser = cptrick999@gmail.com
+remotepasseval = get_keepass_pw("/home/couchsofa/keepass/mail.kdb", title="cptrick", username="cptrick999")
+
+nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
+                               re.sub ('sent_mail', 'sent',
+                               re.sub ('starred', 'flagged',
+                               re.sub (' ', '_', foldername.lower()))))
+folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+keepalive = 60
+holdconnectionopen = yes
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
