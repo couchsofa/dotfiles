@@ -175,7 +175,7 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB-
 bindsym XF86AudioMute        exec amixer -q set Master toggle
 
 # set lock screen
-bindsym Control+$mod1+l exec i3lock -t -i ~/wallpaper/archwave.png
+bindsym $mod1+l exec i3lock -t -i ~/wallpaper/archwave.png
 
 # set wallpaper
 exec feh --bg-scale ~/wallpaper/cyberpunk-1.png
@@ -186,3 +186,7 @@ for_window [title=" - Mozilla Thunderbird"] border none
 
 # no borders
 new_window normal 0 px
+
+# move workspace to monitor
+bindsym Control+$mod1+j move container to output left
+bindsym Control+$mod1+l move container to output right
