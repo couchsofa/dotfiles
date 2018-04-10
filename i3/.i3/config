@@ -175,7 +175,7 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB-
 bindsym XF86AudioMute        exec amixer -q set Master toggle
 
 # set lock screen
-bindsym Control+$mod1+l exec i3lock -i ~/wallpaper/cyberpunk-2.png
+bindsym Control+$mod1+l exec i3lock -t -i ~/wallpaper/archwave.png
 
 # set wallpaper
 exec feh --bg-scale ~/wallpaper/cyberpunk-1.png
