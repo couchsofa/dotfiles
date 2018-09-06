@@ -52,7 +52,7 @@ ZSH_THEME="upholstery"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux zsh-navigation-tools colored-man-pages zsh-syntax-highlighting)
+plugins=(git virtualenv archlinux zsh-navigation-tools colored-man-pages zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,3 +93,5 @@ alias dhcp='sudo systemctl start dhcpcd@wifi0.service'
 #virtualenv
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+
+eval $(thefuck --alias)

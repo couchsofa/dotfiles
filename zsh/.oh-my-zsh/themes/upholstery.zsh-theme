@@ -2,7 +2,7 @@
 local ret_status="%(?:%{$fg_bold[green]%}λ⇒ :%{$fg_bold[red]%}λ⇒ )"
 
 # custom git status
-ZSH_THEME_GIT_PROMPT_PREFIX="[git:"
+ZSH_THEME_GIT_PROMPT_PREFIX="["
 ZSH_THEME_GIT_PROMPT_SUFFIX="]$reset_color"
 ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="$fg[green]"
@@ -32,9 +32,16 @@ function put_spacing() {
       bat=0
   fi
 
+  local venv=$(virtualenv_prompt_info)
+  if [ ${#venv} != 0 ]; then
+	  ((venv = ${#venv} - 0))
+  else
+      venv=0
+  fi
+
   # calculate spaces between left an right part of PROMPT
   local termwidth
-  (( termwidth = ${COLUMNS} - 4 - ${#HOST} - 2 - ${#USER} - ${#$(get_pwd)} - ${bat} - ${git} ))
+  (( termwidth = ${COLUMNS} - 4 - ${#HOST} - 2 - ${#USER} - ${#$(get_pwd)} - ${bat} - ${venv} - ${git} ))
 
   # generate string with the amount of spaces calculated
   local spacing=""
@@ -53,7 +60,7 @@ function battery_charge() {
     # catch acpi no battery
     if [ "`acpi -b | grep -o "Battery"`" != 'Battery' ]
     then
-      echo "$fg[yellow]✗✗✗✗✗✗✗✗✗✗"
+      echo "$fg[yellow][✗✗✗✗✗✗✗✗✗✗]"
     else
 
       local acpi_str=""
@@ -108,10 +115,10 @@ function battery_charge() {
           string="${string}$symbol"
       done
 
-      echo "${prefix}$string"
+      echo "${prefix}[$string]"
     fi
 }
 
 PROMPT='
-%{$fg[cyan]%}%m%{$reset_color%}[%{$fg[blue]%}%n%{$reset_color%}]: %{$fg[yellow]%}$(get_pwd)$(put_spacing)$(git_prompt_info)%{$reset_color%}[$(battery_charge)%{$reset_color%}]
+%{$fg[cyan]%}%m%{$reset_color%}[%{$fg[blue]%}%n%{$reset_color%}]: %{$fg[yellow]%}$(get_pwd)$(put_spacing)%{$fg[blue]%}$(virtualenv_prompt_info)%{$reset_color%}$(git_prompt_info)$(battery_charge)
 ${ret_status}%{$reset_color%}'
